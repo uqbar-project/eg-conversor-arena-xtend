@@ -27,7 +27,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
 /*
  * CelsiusConverterGUI.java
@@ -39,7 +39,6 @@ package org.uqbar.arena.examples.conversor.swing;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -53,85 +52,96 @@ import javax.swing.WindowConstants;
  * @author internet
  */
 public class CelsiusConverterGUI extends javax.swing.JFrame {
-    private javax.swing.JLabel celsiusLabel;
-    private javax.swing.JButton convertButton;
-    private javax.swing.JLabel fahrenheitLabel;
-    private javax.swing.JTextField tempTextField;
+	private javax.swing.JLabel celsiusLabel;
+	private javax.swing.JButton convertButton;
+	private javax.swing.JLabel fahrenheitLabel;
+	private javax.swing.JTextField tempTextField;
 
-    public CelsiusConverterGUI() {
-        this.initComponents();
-    }
-    
-    private void initComponents() {
-        this.tempTextField = new JTextField();
-        this.celsiusLabel = new JLabel();
-        this.convertButton = new JButton();
-        this.fahrenheitLabel = new JLabel();
+	public CelsiusConverterGUI() {
+		this.initComponents();
+	}
 
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setTitle("Celsius Converter");
+	private void initComponents() {
+		this.tempTextField = new JTextField();
+		this.celsiusLabel = new JLabel();
+		this.convertButton = new JButton();
+		this.fahrenheitLabel = new JLabel();
 
-        this.celsiusLabel.setText("Celsius");
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.setTitle("Celsius Converter");
 
-        this.convertButton.setText("Convert");
-        this.convertButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                convertButtonActionPerformed(evt);
-            }
-        });
+		this.celsiusLabel.setText("Celsius");
 
-        this.fahrenheitLabel.setText("Fahrenheit");
+		this.convertButton.setText("Convert");
+		this.convertButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				CelsiusConverterGUI.this.convertButtonActionPerformed(evt);
+			}
+		});
 
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tempTextField, GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(celsiusLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(convertButton)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fahrenheitLabel)))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+		this.fahrenheitLabel.setText("Fahrenheit");
 
-        layout.linkSize(SwingConstants.HORIZONTAL, new Component[] {convertButton, tempTextField});
+		GroupLayout layout = new GroupLayout(this.getContentPane());
+		this.getContentPane().setLayout(layout);
+		layout
+			.setHorizontalGroup(
+			layout
+				.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(layout
+					.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(layout
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addGroup(layout
+							.createSequentialGroup()
+							.addComponent(this.tempTextField, GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+							.addComponent(this.celsiusLabel))
+						.addGroup(layout.createSequentialGroup()
+							.addComponent(this.convertButton)
+							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+							.addComponent(this.fahrenheitLabel)))
+					.addContainerGap(27, Short.MAX_VALUE))
+			);
 
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celsiusLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(convertButton)
-                    .addComponent(fahrenheitLabel))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        pack();
-    }
+		layout.linkSize(SwingConstants.HORIZONTAL, new Component[] { this.convertButton, this.tempTextField });
 
-    private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertButtonActionPerformed
-        int tempFahr = (int)((Double.parseDouble(tempTextField.getText())) * 1.8 + 32);
-        this.fahrenheitLabel.setText(tempFahr + " Fahrenheit");
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CelsiusConverterGUI().setVisible(true);
-            }
-        });
-    }
-    
+		layout
+			.setVerticalGroup(
+			layout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(layout
+					.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(layout
+						.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(this.tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(this.celsiusLabel))
+					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+					.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(this.convertButton)
+						.addComponent(this.fahrenheitLabel))
+					.addContainerGap(21, Short.MAX_VALUE))
+			);
+		this.pack();
+	}
+
+	private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_convertButtonActionPerformed
+		int tempFahr = (int) (Double.parseDouble(this.tempTextField.getText()) * 1.8 + 32);
+		this.fahrenheitLabel.setText(tempFahr + " Fahrenheit");
+	}
+
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String args[]) {
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new CelsiusConverterGUI().setVisible(true);
+			}
+		});
+	}
+
 }

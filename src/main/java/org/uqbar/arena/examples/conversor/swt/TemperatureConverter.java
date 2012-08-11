@@ -28,12 +28,13 @@ public class TemperatureConverter extends ApplicationWindow {
 		this.addStatusLine();
 	}
 
+	@Override
 	public Control createContents(Composite parent) {
 		this.getShell().setText("Temperature Converter");
 		this.converterComposite = new Composite(parent, SWT.NULL);
 		this.converterComposite.setLayout(new GridLayout(4, false));
 
-		this.flabel = new Label(converterComposite, SWT.NULL);
+		this.flabel = new Label(this.converterComposite, SWT.NULL);
 		this.flabel.setText("Fahrenheit: ");
 		this.fahrenheitTextBox = new Text(this.converterComposite, SWT.SINGLE | SWT.BORDER);
 
@@ -41,24 +42,25 @@ public class TemperatureConverter extends ApplicationWindow {
 		this.clabel.setText("Celsius: ");
 		this.celciusTextBox = new Text(this.converterComposite, SWT.SINGLE | SWT.BORDER);
 
-		Button button = new Button(converterComposite, SWT.PUSH);
+		Button button = new Button(this.converterComposite, SWT.PUSH);
 		button.setText("covert");
 		button.addListener(SWT.Selection, new Listener() {
+			@Override
 			public void handleEvent(Event event) {
-				String selected = fahrenheitTextBox.getText();
-				if (selected == "") {
-					celciusTextBox.setText("");
-					setStatus("Enter the value.");
-				} 
+				String selected = TemperatureConverter.this.fahrenheitTextBox.getText();
+				if(selected == "") {
+					TemperatureConverter.this.celciusTextBox.setText("");
+					TemperatureConverter.this.setStatus("Enter the value.");
+				}
 				else {
 					double fahrenheits = Double.parseDouble(selected);
 					double celcius = (fahrenheits - 32) / 1.8;
-					celciusTextBox.setText(Double.toString(celcius));
-					setStatus("Temperature Convert Successfully from F to C.");
+					TemperatureConverter.this.celciusTextBox.setText(Double.toString(celcius));
+					TemperatureConverter.this.setStatus("Temperature Convert Successfully from F to C.");
 				}
 			}
 		});
-		return converterComposite;
+		return this.converterComposite;
 	}
 
 	public static void main(String[] args) {
@@ -66,5 +68,5 @@ public class TemperatureConverter extends ApplicationWindow {
 		converter.setBlockOnOpen(true);
 		converter.open();
 	}
-	
+
 }
