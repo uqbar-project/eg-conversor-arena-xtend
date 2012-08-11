@@ -1,11 +1,11 @@
 package org.uqbar.arena.examples.conversor;
 
-import org.uqbar.commons.utils.TransactionalAndObservable;
+import org.uqbar.commons.utils.Observable;
 
-@TransactionalAndObservable
+@Observable
 public class Conversor {
-	private Double millas;
-	private Double kilometros;
+	private double millas;
+	private double kilometros;
 
 	// ********************************************************
 	// ** Acciones
@@ -19,19 +19,19 @@ public class Conversor {
 	// ** Atributos
 	// ********************************************************
 
-	public Double getMillas() {
+	public double getMillas() {
 		return this.millas;
 	}
 
-	public void setMillas(Double millas) {
+	public void setMillas(double millas) {
 		this.millas = millas;
 	}
 
-	public Double getKilometros() {
+	public double getKilometros() {
 		return this.kilometros;
 	}
 
-	public void setKilometros(Double kilometros) {
+	public void setKilometros(double kilometros) {
 		this.kilometros = kilometros;
 	}
 
