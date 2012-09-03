@@ -34,6 +34,8 @@ public class ConversorWindow extends MainWindow<Conversor> {
 
 	@Override
 	public void createContents(Panel mainPanel) {
+		this.setTitle("Conversor de millas a kilómetros");
+		
 		mainPanel.setLayout(new VerticalLayout());
 
 		new Label(mainPanel).setText("Ingrese la longitud en millas");
