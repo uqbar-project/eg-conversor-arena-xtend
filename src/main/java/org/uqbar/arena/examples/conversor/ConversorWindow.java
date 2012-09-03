@@ -1,5 +1,7 @@
 package org.uqbar.arena.examples.conversor;
 
+import java.awt.Color;
+
 import org.uqbar.arena.actions.MessageSend;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
@@ -34,15 +36,19 @@ public class ConversorWindow extends MainWindow<Conversor> {
 	public void createContents(Panel mainPanel) {
 		mainPanel.setLayout(new VerticalLayout());
 
+		new Label(mainPanel).setText("Ingrese la longitud en millas");
 		TextBox millas = new TextBox(mainPanel);
 		millas.bindValueToProperty("millas");
 
 		Button convertir = new Button(mainPanel);
-		convertir.setCaption("Convertir");
+		convertir.setCaption("Convertir a kilómetros");
 		convertir.onClick(new MessageSend(this.getModelObject(), "convertir"));
 
 		Label kilometros = new Label(mainPanel);
+		kilometros.setBackground(Color.ORANGE);
 		kilometros.bindValueToProperty("kilometros");
+		
+		new Label(mainPanel).setText(" kilómetros");
 	}
 
 	public static void main(String[] args) {
