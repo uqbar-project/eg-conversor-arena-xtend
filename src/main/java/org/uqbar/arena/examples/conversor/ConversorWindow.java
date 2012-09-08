@@ -11,18 +11,18 @@ import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
 
 /**
- * Ejemplo de Conversor de medidas con el framework arena.
- * Es una ventana que tiene como modelo una instancia de la clase {@link Conversor}.
+ * Ejemplo de conversor de medidas con el framework Arena. Es una ventana que tiene como modelo una instancia
+ * de la clase {@link Conversor}.
  * 
  * Muestra:
  * <ul>
- * 	<li>un textbox donde se ingresa el valor de entrada</li>
- *  <li>un botón para ejecutar la conversión.</li>
- *  <li>un label donde se muestra el resultado de la conversión.</li>
+ * <li>un textbox donde se ingresa el valor de entrada</li>
+ * <li>un botón para ejecutar la conversión.</li>
+ * <li>un label donde se muestra el resultado de la conversión.</li>
  * </ul>
- *  
+ * 
  * IMPORTANTE: Correr esta clase con el siguiente argument
- * 		-Djava.system.class.loader=org.uqbar.arena.aop.ArenaClassLoader
+ * -Djava.system.class.loader=org.uqbar.arena.aop.ArenaClassLoader
  * 
  * @author npasserini
  */
@@ -35,21 +35,20 @@ public class ConversorWindow extends MainWindow<Conversor> {
 	@Override
 	public void createContents(Panel mainPanel) {
 		this.setTitle("Conversor de millas a kilómetros");
-		
 		mainPanel.setLayout(new VerticalLayout());
 
 		new Label(mainPanel).setText("Ingrese la longitud en millas");
-		TextBox millas = new TextBox(mainPanel);
-		millas.bindValueToProperty("millas");
 
-		Button convertir = new Button(mainPanel);
-		convertir.setCaption("Convertir a kilómetros");
-		convertir.onClick(new MessageSend(this.getModelObject(), "convertir"));
+		new TextBox(mainPanel).bindValueToProperty("millas");
 
-		Label kilometros = new Label(mainPanel);
-		kilometros.setBackground(Color.ORANGE);
-		kilometros.bindValueToProperty("kilometros");
-		
+		new Button(mainPanel) //
+			.setCaption("Convertir a kilómetros")
+			.onClick(new MessageSend(this.getModelObject(), "convertir"));
+
+		new Label(mainPanel) //
+			.setBackground(Color.ORANGE)
+			.bindValueToProperty("kilometros");
+
 		new Label(mainPanel).setText(" kilómetros");
 	}
 

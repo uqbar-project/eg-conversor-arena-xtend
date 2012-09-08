@@ -1,8 +1,8 @@
 package org.uqbar.arena.examples.conversor;
 
-import org.uqbar.commons.utils.TransactionalAndObservable;
+import org.uqbar.commons.utils.Observable;
 
-@TransactionalAndObservable
+@Observable
 public class Conversor {
 	private double millas;
 	private double kilometros;
@@ -34,5 +34,4 @@ public class Conversor {
 	public void setKilometros(double kilometros) {
 		this.kilometros = kilometros;
 	}
-
 }
