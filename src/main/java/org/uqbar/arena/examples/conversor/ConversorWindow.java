@@ -21,7 +21,7 @@ import org.uqbar.arena.windows.MainWindow;
  * <li>un label donde se muestra el resultado de la conversión.</li>
  * </ul>
  * 
- * IMPORTANTE: Correr esta clase con el siguiente argument
+ * IMPORTANTE: Correr esta clase con el siguiente argumento a la VM
  * -Djava.system.class.loader=org.uqbar.arena.aop.ArenaClassLoader
  * 
  * @author npasserini

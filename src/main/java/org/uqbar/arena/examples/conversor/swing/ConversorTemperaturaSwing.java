@@ -37,8 +37,10 @@
 package org.uqbar.arena.examples.conversor.swing;
 
 import java.awt.Component;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -51,37 +53,41 @@ import javax.swing.WindowConstants;
  * 
  * @author internet
  */
-public class CelsiusConverterGUI extends javax.swing.JFrame {
-	private javax.swing.JLabel celsiusLabel;
-	private javax.swing.JButton convertButton;
-	private javax.swing.JLabel fahrenheitLabel;
-	private javax.swing.JTextField tempTextField;
+public class ConversorTemperaturaSwing extends javax.swing.JFrame {
+	private JLabel celsiusLabel;
+	private JButton convertButton;
+	private JLabel fahrenheitLabel;
+	private JTextField celsiusTextField;
 
-	public CelsiusConverterGUI() {
+	public ConversorTemperaturaSwing() {
 		this.initComponents();
 	}
 
 	private void initComponents() {
-		this.tempTextField = new JTextField();
-		this.celsiusLabel = new JLabel();
-		this.convertButton = new JButton();
+		this.setTitle("Celsius Converter");
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
+		this.celsiusTextField = new JTextField();
 		this.fahrenheitLabel = new JLabel();
 
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		this.setTitle("Celsius Converter");
-
+		this.celsiusLabel = new JLabel();
 		this.celsiusLabel.setText("Celsius");
 
+		this.convertButton = new JButton();
 		this.convertButton.setText("Convert");
 		this.convertButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
-				CelsiusConverterGUI.this.convertButtonActionPerformed(evt);
+				ConversorTemperaturaSwing.this.convertButtonActionPerformed(evt);
 			}
 		});
 
 		this.fahrenheitLabel.setText("Fahrenheit");
+		this.configureLayout();
+		this.pack();
+	}
 
+	protected void configureLayout() {
 		GroupLayout layout = new GroupLayout(this.getContentPane());
 		this.getContentPane().setLayout(layout);
 		layout
@@ -95,7 +101,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(layout
 							.createSequentialGroup()
-							.addComponent(this.tempTextField, GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+							.addComponent(this.celsiusTextField, GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 							.addComponent(this.celsiusLabel))
 						.addGroup(layout.createSequentialGroup()
@@ -105,7 +111,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 					.addContainerGap(27, Short.MAX_VALUE))
 			);
 
-		layout.linkSize(SwingConstants.HORIZONTAL, new Component[] { this.convertButton, this.tempTextField });
+		layout.linkSize(SwingConstants.HORIZONTAL, new Component[] { this.convertButton, this.celsiusTextField });
 
 		layout
 			.setVerticalGroup(
@@ -116,7 +122,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 					.addContainerGap()
 					.addGroup(layout
 						.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-						.addComponent(this.tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(this.celsiusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 						.addComponent(this.celsiusLabel))
 					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -124,11 +130,10 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 						.addComponent(this.fahrenheitLabel))
 					.addContainerGap(21, Short.MAX_VALUE))
 			);
-		this.pack();
 	}
 
 	private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_convertButtonActionPerformed
-		int tempFahr = (int) (Double.parseDouble(this.tempTextField.getText()) * 1.8 + 32);
+		int tempFahr = (int) (Double.parseDouble(this.celsiusTextField.getText()) * 1.8 + 32);
 		this.fahrenheitLabel.setText(tempFahr + " Fahrenheit");
 	}
 
@@ -136,10 +141,10 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 	 * @param args the command line arguments
 	 */
 	public static void main(String args[]) {
-		java.awt.EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new CelsiusConverterGUI().setVisible(true);
+				new ConversorTemperaturaSwing().setVisible(true);
 			}
 		});
 	}
