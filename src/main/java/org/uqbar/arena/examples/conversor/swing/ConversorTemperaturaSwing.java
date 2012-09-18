@@ -37,6 +37,7 @@
 package org.uqbar.arena.examples.conversor.swing;
 
 import java.awt.Component;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,6 +50,7 @@ import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+
 /**
  * 
  * @author internet
@@ -58,6 +60,7 @@ public class ConversorTemperaturaSwing extends javax.swing.JFrame {
 	private JButton convertButton;
 	private JLabel fahrenheitLabel;
 	private JTextField celsiusTextField;
+	private Conversor conversor = new Conversor();
 
 	public ConversorTemperaturaSwing() {
 		this.initComponents();
@@ -66,7 +69,7 @@ public class ConversorTemperaturaSwing extends javax.swing.JFrame {
 	private void initComponents() {
 		this.setTitle("Celsius Converter");
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		
+
 		this.celsiusTextField = new JTextField();
 		this.fahrenheitLabel = new JLabel();
 
@@ -90,50 +93,52 @@ public class ConversorTemperaturaSwing extends javax.swing.JFrame {
 	protected void configureLayout() {
 		GroupLayout layout = new GroupLayout(this.getContentPane());
 		this.getContentPane().setLayout(layout);
-		layout
-			.setHorizontalGroup(
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(
 			layout
-				.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(layout
-					.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(layout
+				.createSequentialGroup()
+				.addContainerGap()
+				.addGroup(
+					layout
 						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(layout
-							.createSequentialGroup()
-							.addComponent(this.celsiusTextField, GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-							.addComponent(this.celsiusLabel))
-						.addGroup(layout.createSequentialGroup()
-							.addComponent(this.convertButton)
-							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-							.addComponent(this.fahrenheitLabel)))
-					.addContainerGap(27, Short.MAX_VALUE))
-			);
+						.addGroup(
+							layout
+								.createSequentialGroup()
+								.addComponent(this.celsiusTextField, GroupLayout.PREFERRED_SIZE,
+									javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(this.celsiusLabel))
+						.addGroup(
+							layout
+								.createSequentialGroup()
+								.addComponent(this.convertButton)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(this.fahrenheitLabel)))
+				.addContainerGap(27, Short.MAX_VALUE)));
 
 		layout.linkSize(SwingConstants.HORIZONTAL, new Component[] { this.convertButton, this.celsiusTextField });
 
-		layout
-			.setVerticalGroup(
+		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
 			layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout
-					.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(layout
+				.createSequentialGroup()
+				.addContainerGap()
+				.addGroup(
+					layout
 						.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-						.addComponent(this.celsiusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(this.celsiusTextField, javax.swing.GroupLayout.PREFERRED_SIZE,
+							javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 						.addComponent(this.celsiusLabel))
-					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-					.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(
+					layout
+						.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 						.addComponent(this.convertButton)
 						.addComponent(this.fahrenheitLabel))
-					.addContainerGap(21, Short.MAX_VALUE))
-			);
+				.addContainerGap(21, Short.MAX_VALUE)));
 	}
 
 	private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_convertButtonActionPerformed
-		int tempFahr = (int) (Double.parseDouble(this.celsiusTextField.getText()) * 1.8 + 32);
+		double tempCelsius = Double.parseDouble(this.celsiusTextField.getText());
+		double tempFahr = this.conversor.convertir(tempCelsius);
 		this.fahrenheitLabel.setText(tempFahr + " Fahrenheit");
 	}
 
