@@ -8,6 +8,6 @@ class Conversor2 {
 	@Property double kilometros 
 	
 	def convertir() {
-		kilometros = millas * 1.60934;
+		kilometros = millas * 1.60934
 	}
 }

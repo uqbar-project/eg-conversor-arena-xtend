@@ -1,6 +1,7 @@
 package org.uqbar.arena.examples.conversor.xtend
 
 import java.awt.Color
+import org.uqbar.arena.examples.conversor.Conversor
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -10,33 +11,33 @@ import org.uqbar.arena.windows.MainWindow
 
 class ConversorWindow extends MainWindow<Conversor> {
 	new() {
-		super(new Conversor);
+		super(new Conversor)
 	}
 
 	override createContents(Panel mainPanel) {
-		this.setTitle("Conversor de millas a kilómetros (XTend)");
-		mainPanel.setLayout(new VerticalLayout());
+		this.setTitle("Conversor de millas a kilómetros (XTend)")
+		mainPanel.setLayout(new VerticalLayout)
 
-		new Label(mainPanel).setText("Ingrese la longitud en millas");
+		new Label(mainPanel).setText("Ingrese la longitud en millas")
 
-		new TextBox(mainPanel).bindValueToProperty("millas");
+		new TextBox(mainPanel).bindValueToProperty("millas")
 
 		new Button(mainPanel) 
 			.setCaption("Convertir a kilómetros")
-			.onClk [ this.getModelObject().convertir() ];
+			.onClk [ this.modelObject.convertir ]
 
 		new Label(mainPanel)
 			.setBackground(Color::ORANGE)
-			.bindValueToProperty("kilometros");
+			.bindValueToProperty("kilometros")
 
-		new Label(mainPanel).setText(" kilómetros");
+		new Label(mainPanel).setText(" kilómetros")
 	}
 
 	def static main(String[] args) {
-		new ConversorWindow().startApplication();
+		new ConversorWindow().startApplication
 	}
 
-	def onClk(Button b, MyAction a) {
-		b.onClick(new MyActionAdapter(a));
+	def onClk(Button button, MyAction action) {
+		button.onClick(new MyActionAdapter(action))
 	}	
 }
