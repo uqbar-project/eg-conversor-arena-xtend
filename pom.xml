@@ -11,13 +11,13 @@
 	<parent>
 		<groupId>uqbar</groupId>
 		<artifactId>arena-parent</artifactId>
-		<version>1.1</version>
+		<version>1.3-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>uqbar</groupId>
-			<artifactId>arena</artifactId>
+			<artifactId>arena-jface</artifactId>
 			<version>${arena-version}</version>
 		</dependency>
 
