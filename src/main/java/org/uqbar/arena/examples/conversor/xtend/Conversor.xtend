@@ -3,7 +3,7 @@ package org.uqbar.arena.examples.conversor.xtend
 import org.uqbar.commons.utils.Observable
 
 @Observable
-class Conversor2 {
+class Conversor {
 	@Property double millas
 	@Property double kilometros 
 	

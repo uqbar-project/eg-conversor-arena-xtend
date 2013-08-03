@@ -24,7 +24,7 @@ class ConversorWindow extends MainWindow<Conversor> {
 
 		new Button(mainPanel) 
 			.setCaption("Convertir a kilómetros")
-			.onClk [ this.modelObject.convertir ]
+			.onClick [ | this.modelObject.convertir ]
 
 		new Label(mainPanel)
 			.setBackground(Color::ORANGE)
@@ -37,7 +37,4 @@ class ConversorWindow extends MainWindow<Conversor> {
 		new ConversorWindow().startApplication
 	}
 
-	def onClk(Button button, MyAction action) {
-		button.onClick(new MyActionAdapter(action))
-	}	
 }

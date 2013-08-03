@@ -13,9 +13,4 @@ public class MyActionAdapter implements Action {
 	public void execute() {
 		myAction.execute(null);
 	}
-	
-	@Override
-	public <T> void execute(T... objects) {
-		// TODO Auto-generated method stub
-	}
 }
