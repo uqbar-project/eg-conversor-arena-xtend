@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>uqbar-project.org</groupId>
-	<artifactId>conversor-ui-arena</artifactId>
+	<artifactId>conversor-ui-arena-xtend</artifactId>
 	<version>1.1-SNAPSHOT</version>
 	<name>conversor-ui-arena</name>
 	<description>Ejemplo más simple de una aplicación con Arena usando bindings.</description>
@@ -31,38 +31,35 @@
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.standalone</artifactId>
 			<version>2.4.2</version>
-			<!-- <groupId>org.eclipse.xtext</groupId> -->
-			<!-- <artifactId>org.eclipse.xtext.xbase.lib</artifactId> -->
-			<!-- <version>2.4.2</version> -->
 		</dependency>
 
 	</dependencies>
 
-<!-- 	<build> -->
-<!-- 		<plugins> -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.mojo</groupId> -->
-<!-- 				<artifactId>build-helper-maven-plugin</artifactId> -->
-<!-- 				<version>1.1</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<goals> -->
-<!-- 							<goal>compile</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<outputDirectory>${basedir}/src/main/xtend-gen</outputDirectory> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 					<execution> -->
-<!-- 						<goals> -->
-<!-- 							<goal>testCompile</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<outputDirectory>${basedir}/src/test/xtend-gen</outputDirectory> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
-<!-- 		</plugins> -->
-<!-- 	</build> -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/xtend-gen</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/test/xtend-gen</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
