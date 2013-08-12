@@ -1,7 +1,6 @@
 package org.uqbar.arena.examples.conversor.xtend
 
 import java.awt.Color
-import org.uqbar.arena.examples.conversor.Conversor
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
