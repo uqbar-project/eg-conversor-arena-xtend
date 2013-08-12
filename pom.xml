@@ -15,9 +15,16 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>uqbar</groupId>
+			<groupId>org.uqbar-project</groupId>
 			<artifactId>arena-jface</artifactId>
 			<version>3.3-SNAPSHOT</version>
 		</dependency>
+		
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.xtend</groupId> -->
+		<!-- <artifactId>org.eclipse.xtend.standalone</artifactId> -->
+		<!-- <version>2.4.2</version> -->
+		<!-- </dependency> -->
+
 	</dependencies>
 </project>
