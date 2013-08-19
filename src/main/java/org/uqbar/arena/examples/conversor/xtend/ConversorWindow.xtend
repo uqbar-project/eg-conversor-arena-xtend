@@ -6,7 +6,7 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.windows.MainWindowimport org.uqbar.arena.windows.ErrorsPanel
 
 class ConversorWindow extends MainWindow<Conversor> {
 	new() {
@@ -16,6 +16,8 @@ class ConversorWindow extends MainWindow<Conversor> {
 	override createContents(Panel mainPanel) {
 		this.setTitle("Conversor de millas a kilómetros (XTend)")
 		mainPanel.setLayout(new VerticalLayout)
+		
+		new ErrorsPanel(mainPanel, "Listo para convertir")
 
 		new Label(mainPanel).setText("Ingrese la longitud en millas")
 
