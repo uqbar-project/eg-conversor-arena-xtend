@@ -8,6 +8,9 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindowimport org.uqbar.arena.windows.ErrorsPanel
 
+/**
+ * Ejemplo de conversor millas -> kilometros en xtend
+ */
 class ConversorWindow extends MainWindow<Conversor> {
 	new() {
 		super(new Conversor)
@@ -23,9 +26,10 @@ class ConversorWindow extends MainWindow<Conversor> {
 
 		new TextBox(mainPanel).bindValueToProperty("millas")
 
-		new Button(mainPanel) 
-			.setCaption("Convertir a kilómetros")
-			.onClick [ | this.modelObject.convertir ]
+		new Button(mainPanel) => [
+			caption = "Convertir a kilómetros"
+			onClick [ | this.modelObject.convertir ]
+		]
 
 		new Label(mainPanel)
 			.setBackground(Color::ORANGE)
