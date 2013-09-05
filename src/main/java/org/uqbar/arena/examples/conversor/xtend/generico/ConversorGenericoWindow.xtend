@@ -5,11 +5,12 @@ import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.ErrorsPanel
 import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.bindings.NotNullObservable
 
 /**
  * Conversor generico que permite diversas operaciones de 
@@ -31,7 +32,7 @@ class ConversorGenericoWindow extends MainWindow<ConversorGenerico> {
 
 		new TextBox(mainPanel).bindValueToProperty("input")
 		
-		new Selector(mainPanel) => [
+		new List(mainPanel) => [
 			allowNull(false)
 			val binding = bindItemsToProperty("conversionesPosibles")
 			binding.setAdapter(new PropertyAdapter(typeof(Conversion), "nombre"))
@@ -39,13 +40,15 @@ class ConversorGenericoWindow extends MainWindow<ConversorGenerico> {
 			bindValueToProperty("conversion")
 		]
 
-		new Button(mainPanel) 
-			.setCaption("Convertir")
-			.onClick [ | this.modelObject.convertir ]
-
+		new Button(mainPanel) => [ 
+			caption = "Convertir"
+			onClick [ | modelObject.convertir ]
+			bindEnabled(new NotNullObservable("conversion"))
+		]
+		
 		new Label(mainPanel).setText("A: ")	
 		new Label(mainPanel)
-			.setBackground(Color::ORANGE)
+			.setBackground(Color.ORANGE)
 			.bindValueToProperty("output")
 	}
 

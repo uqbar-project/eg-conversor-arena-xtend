@@ -1,6 +1,7 @@
 package org.uqbar.arena.examples.conversor.xtend.generico
 
 import org.uqbar.commons.utils.Observable
+import static extension org.uqbar.commons.model.ObservableUtils.*
 
 @Observable
 class ConversorGenerico {
@@ -12,12 +13,21 @@ class ConversorGenerico {
 		output = conversion.convertir(this.input)
 	}
 	
+	def setConversion(Conversion conversion) {
+		this._conversion = conversion
+		firePropertyChanged("puedeConvertir", puedeConvertir)
+	}
+	
+	def isPuedeConvertir() {
+		conversion != null 
+	}
+	
 	def getConversionesPosibles() {
 		#[	new MillasAKmConversion, 
 			new KmAMillasConversion, 
 			new OnzaAGramosConversion, 
 			new GramosAOnzaConversion
 		]
-	}	
+	}
 	
 }
