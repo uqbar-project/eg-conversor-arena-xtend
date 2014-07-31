@@ -136,7 +136,7 @@ public class ConversorSincronizadoSWT implements VerifyListener, ModifyListener 
 			}
 		}
 		catch(NumberFormatException e) {
-			feedbackLabel.text = "Error en la conversión: " + e.message
+			feedbackLabel.text = "Error en la conversión: ".concat(e.message)
 		}
 
 		// Add the listeners back
