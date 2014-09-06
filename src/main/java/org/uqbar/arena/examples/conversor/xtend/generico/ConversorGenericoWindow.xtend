@@ -1,6 +1,7 @@
 package org.uqbar.arena.examples.conversor.xtend.generico
 
 import java.awt.Color
+import org.uqbar.arena.bindings.NotNullObservable
 import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
@@ -10,7 +11,6 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.ErrorsPanel
 import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.bindings.NotNullObservable
 
 /**
  * Conversor generico que permite diversas operaciones de 
@@ -34,8 +34,7 @@ class ConversorGenericoWindow extends MainWindow<ConversorGenerico> {
 		
 		new List(mainPanel) => [
 			allowNull(false)
-			val binding = bindItemsToProperty("conversionesPosibles")
-			binding.setAdapter(new PropertyAdapter(typeof(Conversion), "nombre"))
+			bindItemsToProperty("conversionesPosibles").adapter = nombreAdapter
 			
 			bindValueToProperty("conversion")
 		]
@@ -50,6 +49,10 @@ class ConversorGenericoWindow extends MainWindow<ConversorGenerico> {
 		new Label(mainPanel)
 			.setBackground(Color.ORANGE)
 			.bindValueToProperty("output")
+	}
+	
+	def nombreAdapter() {
+		new PropertyAdapter(typeof(Conversion), "nombre")
 	}
 
 	def static main(String[] args) {
