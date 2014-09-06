@@ -1,9 +1,12 @@
 package org.uqbar.arena.examples.conversor.swing;
 
+/**
+ * 
+ */
 class Conversor {
 
-	def convertir(double tempCelsius) {
-		tempCelsius * 1.8 + 32
+	def convertir(double millas) {
+		millas * 1.60934
 	}
 
 }
