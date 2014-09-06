@@ -1,43 +1,109 @@
 package org.uqbar.arena.examples.conversor.swt
 
-import org.eclipse.swt.SWT
+import java.text.DecimalFormat
+import java.util.concurrent.locks.ReentrantLock
 import org.eclipse.swt.events.ModifyEvent
 import org.eclipse.swt.events.ModifyListener
-import org.eclipse.swt.events.VerifyEvent
-import org.eclipse.swt.events.VerifyListener
 import org.eclipse.swt.layout.GridData
 import org.eclipse.swt.layout.GridLayout
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.widgets.Label
 import org.eclipse.swt.widgets.Shell
 import org.eclipse.swt.widgets.Text
-import java.util.concurrent.locks.ReentrantLock
+
+import static org.eclipse.swt.SWT.*
 
 /**
- * Conversor entre celsius y fahrenheit:
+ * Conversor en SWT 
  *  - en ambas direcciones
  *  - sin botón, es decir, automáticamente al escribir
  * 
- * @author jfernandes (basado en algún ejemplo de internet, emprolijando un poco)
+ * @author jfernandes
  */
-public class ConversorSincronizadoSWT implements VerifyListener, ModifyListener {
-	// Constants used for conversions
-	val FIVE_NINTHS = 5.0 / 9.0
-	val NINE_FIFTHS = 9.0 / 5.0
+public class ConversorSincronizadoSWT implements ModifyListener {
+	val MILLAS_KM = 1.60934
+	val KM_MILLAS = 1 / 1.60934 
 
 	// Widgets used in the window
-	Text fahrenheit
-	Text celsius
+	Text millas
+	Text kms
 	Label feedbackLabel
 	val eventsLock = new ReentrantLock
 
 	/**
+	 * Create the main window's contents
+	 * @param shell the main window
+	 */
+	def createContents(Shell shell) {
+		shell.layout = new GridLayout(3, true)
+
+		// millas
+		new Label(shell, LEFT).text = "Millas:"
+		millas = new Text(shell, BORDER) 
+		millas.layoutData = new GridData(GridData.FILL_HORIZONTAL) => [ horizontalSpan = 2 ]
+		
+		millas.addModifyListener(this)
+
+		// kms
+		new Label(shell, LEFT).text = "Kms:"
+		kms = new Text(shell, BORDER)
+		kms.layoutData = new GridData(GridData.FILL_HORIZONTAL) => [ horizontalSpan = 2 ]
+		kms.addModifyListener(this)
+		
+		// feedback
+		feedbackLabel = new Label(shell, LEFT.bitwiseOr(BORDER))
+		feedbackLabel.layoutData = new GridData(GridData.FILL_HORIZONTAL) => [ horizontalSpan = 3 ]
+	}
+
+	/**
+	 * Called when the user modifies the text in a text box
+	 */
+	override def void modifyText(ModifyEvent event) {
+		eventsLock.lock
+		feedbackLabel.text = ""
+		
+		// Remove all the listeners (avoid infinite loops)
+		kms.removeModifyListener(this)
+		millas.removeModifyListener(this)
+
+		val modifiedText = event.widget as Text
+
+		try {
+			val newValue = Double.parseDouble(modifiedText.text)
+
+			if(modifiedText == millas) {
+				// millas -> kms
+				kms.text = new DecimalFormat("#.##").format(newValue * MILLAS_KM)
+			}
+			else {
+				// kms -> millas 
+				millas.text = new DecimalFormat("#.##").format(newValue * KM_MILLAS)
+			}
+		}
+		catch(NumberFormatException e) {
+			feedbackLabel.text = "Error en la conversión: ".concat(e.message)
+		}
+
+		// Add the listeners back
+		kms.addModifyListener(this)
+		millas.addModifyListener(this)
+		
+		eventsLock.unlock
+	}
+	
+	// MAIN & RUN
+
+	def static main(String[] args) {
+		new ConversorSincronizadoSWT().run
+	}
+	
+		/**
 	 * Runs the application
 	 */
 	def run() {
 		val display = new Display
 		val shell = new Shell(display)
-		shell.text = "Temperatures"
+		shell.text = "Conversor Sincronizado (SWT)"
 		createContents(shell)
 		shell.pack
 		shell.open
@@ -48,112 +114,5 @@ public class ConversorSincronizadoSWT implements VerifyListener, ModifyListener 
 			}
 		}
 		display.dispose
-	}
-
-	/**
-	 * Create the main window's contents
-	 * @param shell the main window
-	 */
-	def createContents(Shell shell) {
-		shell.layout = new GridLayout(3, true)
-
-		// fahrenheit
-		new Label(shell, SWT::LEFT).text = "Fahrenheit:"
-		fahrenheit = new Text(shell, SWT::BORDER)
-		var data = new GridData(GridData::FILL_HORIZONTAL)
-		data.horizontalSpan = 2
-		fahrenheit.layoutData = data
-
-		fahrenheit.addVerifyListener(this)
-		fahrenheit.addModifyListener(this)
-
-		// celsius
-		new Label(shell, SWT::LEFT).text = "Celsius:"
-		celsius = new Text(shell, SWT::BORDER)
-		data = new GridData(GridData::FILL_HORIZONTAL)
-		data.horizontalSpan = 2
-		this.celsius.layoutData = data
-		this.celsius.addVerifyListener(this)
-		this.celsius.addModifyListener(this)
-		
-		// feedback
-		feedbackLabel = new Label(shell, SWT::LEFT.bitwiseOr(SWT::BORDER))
-		data = new GridData(GridData::FILL_HORIZONTAL)
-		data.horizontalSpan = 3
-		this.feedbackLabel.layoutData = data
-	}
-
-	/**
-	 * Called when the user types into a text box, but before the text box gets what the user typed
-	 */
-	override def verifyText(VerifyEvent event) {
-		event.doit = false
-
-		// Get the character typed
-		val typedCharacter = event.character
-		val text = (event.widget as Text).text
-
-		// Allow '-' if first character
-		if(typedCharacter == '-' && text.length == 0) {
-			event.doit = true
-		}
-
-		// Allow 0-9
-		if(Character::isDigit(typedCharacter)) {
-			event.doit = true
-		}
-
-		// Allow backspace
-		if(typedCharacter == '\b') {
-			event.doit = true
-		}
-	}
-
-	/**
-	 * Called when the user modifies the text in a text box
-	 */
-	override def void modifyText(ModifyEvent event) {
-		eventsLock.lock
-		
-		// Remove all the listeners (avoid infinite loops)
-		celsius.removeVerifyListener(this)
-		celsius.removeModifyListener(this)
-		fahrenheit.removeVerifyListener(this)
-		fahrenheit.removeModifyListener(this)
-
-		val modifiedText = event.widget as Text
-
-		try {
-			val newValue = Integer::parseInt(modifiedText.text)
-
-			if(modifiedText == fahrenheit) {
-				// fahrenheit -> celsius
-				celsius.text = String::valueOf(FIVE_NINTHS * (newValue - 32) as int)
-			}
-			else {
-				// celsius -> fahrenheit 
-				fahrenheit.text = String::valueOf(NINE_FIFTHS * newValue + 32 as int)
-			}
-		}
-		catch(NumberFormatException e) {
-			feedbackLabel.text = "Error en la conversión: ".concat(e.message)
-		}
-
-		// Add the listeners back
-		celsius.addVerifyListener(this)
-		celsius.addModifyListener(this)
-		fahrenheit.addVerifyListener(this)
-		fahrenheit.addModifyListener(this)
-		
-		eventsLock.unlock
-	}
-
-	/**
-	 * The application entry point
-	 * 
-	 * @param args the command line arguments
-	 */
-	static def main(String[] args) {
-		new ConversorSincronizadoSWT().run
 	}
 }
