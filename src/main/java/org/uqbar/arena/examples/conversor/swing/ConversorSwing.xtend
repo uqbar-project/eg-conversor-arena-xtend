@@ -16,7 +16,7 @@ import javax.swing.WindowConstants
 /**
  * 
  */
-class ConversorTemperaturaSwing extends JFrame {
+class ConversorSwing extends JFrame {
 	JLabel millasLabel
 	JButton convertButton
 	JLabel kmsLabel
@@ -53,7 +53,7 @@ class ConversorTemperaturaSwing extends JFrame {
 	}
 
 	def static void main(String[] args) {
-		EventQueue.invokeLater([| new ConversorTemperaturaSwing().visible = true ])
+		EventQueue.invokeLater([| new ConversorSwing().visible = true ])
 	}
 	
 		def configureLayout() {
