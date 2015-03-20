@@ -6,7 +6,9 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.MainWindowimport org.uqbar.arena.windows.ErrorsPanel
+import org.uqbar.arena.windows.ErrorsPanel
+import org.uqbar.arena.windows.MainWindow
+import org.uqbar.conversor.Conversor
 
 /**
  * Ejemplo de conversor millas -> kilometros en xtend
@@ -17,12 +19,12 @@ class ConversorWindow extends MainWindow<Conversor> {
 	}
 
 	override createContents(Panel mainPanel) {
-		this.setTitle("Conversor de millas a kilómetros (XTend)")
-		mainPanel.setLayout(new VerticalLayout)
+		this.title = "Conversor de millas a kilómetros (XTend)"
+		mainPanel.layout = new VerticalLayout
 		
-		new ErrorsPanel(mainPanel, "Listo para convertir")
+		new ErrorsPanel(mainPanel, "Listo para convertir")	
 
-		new Label(mainPanel).setText("Ingrese la longitud en millas")
+		new Label(mainPanel).text = "Ingrese la longitud en millas"
 
 		new TextBox(mainPanel).bindValueToProperty("millas")
 
@@ -35,7 +37,7 @@ class ConversorWindow extends MainWindow<Conversor> {
 			.setBackground(Color::ORANGE)
 			.bindValueToProperty("kilometros")
 
-		new Label(mainPanel).setText(" kilómetros")
+		new Label(mainPanel).text = " kilómetros"
 	}
 
 	def static main(String[] args) {

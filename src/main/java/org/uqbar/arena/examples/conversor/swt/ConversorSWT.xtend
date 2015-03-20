@@ -1,6 +1,7 @@
 package org.uqbar.arena.examples.conversor.swt
 
-import com.uqbar.commons.StringUtils
+import java.text.DecimalFormat
+import org.apache.commons.lang.StringUtils
 import org.eclipse.jface.window.ApplicationWindow
 import org.eclipse.swt.layout.GridData
 import org.eclipse.swt.layout.GridLayout
@@ -11,7 +12,6 @@ import org.eclipse.swt.widgets.Label
 import org.eclipse.swt.widgets.Text
 
 import static org.eclipse.swt.SWT.*
-import java.text.DecimalFormat
 
 /**
  * Conversor de temperatura en swt "crudo".

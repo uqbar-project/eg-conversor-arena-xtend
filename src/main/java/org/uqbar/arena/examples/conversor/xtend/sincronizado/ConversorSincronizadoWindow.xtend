@@ -6,6 +6,7 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.ErrorsPanel
 import org.uqbar.arena.windows.MainWindow
+import org.uqbar.conversor.ConversorSincronizado
 
 /**
  * Variante del conversor bidireccional.

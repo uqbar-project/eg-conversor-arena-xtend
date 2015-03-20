@@ -12,6 +12,7 @@ import javax.swing.JTextField
 import javax.swing.LayoutStyle.ComponentPlacement
 import javax.swing.SwingConstants
 import javax.swing.WindowConstants
+import org.uqbar.conversor.ConversorBasico
 
 /**
  * 
@@ -21,7 +22,7 @@ class ConversorSwing extends JFrame {
 	JButton convertButton
 	JLabel kmsLabel
 	JTextField millasTextField
-	Conversor conversor = new Conversor
+	ConversorBasico conversor = new ConversorBasico
 
 	new() {
 		title = "Conversor Millas->Kms (Swing)"

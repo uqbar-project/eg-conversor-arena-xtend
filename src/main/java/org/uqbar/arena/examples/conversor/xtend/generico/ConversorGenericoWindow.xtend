@@ -11,6 +11,8 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.ErrorsPanel
 import org.uqbar.arena.windows.MainWindow
+import org.uqbar.conversor.Conversion
+import org.uqbar.conversor.ConversorGenerico
 
 /**
  * Conversor generico que permite diversas operaciones de 
@@ -35,7 +37,6 @@ class ConversorGenericoWindow extends MainWindow<ConversorGenerico> {
 		new List(mainPanel) => [
 			allowNull(false)
 			bindItemsToProperty("conversionesPosibles").adapter = nombreAdapter
-			
 			bindValueToProperty("conversion")
 		]
 
