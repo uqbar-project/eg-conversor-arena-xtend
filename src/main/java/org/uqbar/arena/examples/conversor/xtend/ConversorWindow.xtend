@@ -34,7 +34,7 @@ class ConversorWindow extends MainWindow<Conversor> {
 		]
 
 		new Label(mainPanel)
-			.setBackground(Color::ORANGE)
+			.setBackground(Color.ORANGE)
 			.bindValueToProperty("kilometros")
 
 		new Label(mainPanel).text = " kilómetros"
