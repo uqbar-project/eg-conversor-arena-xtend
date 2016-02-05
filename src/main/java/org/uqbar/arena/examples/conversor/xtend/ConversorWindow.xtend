@@ -4,11 +4,12 @@ import java.awt.Color
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.NumericField
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.ErrorsPanel
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.conversor.Conversor
+
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 /**
@@ -28,12 +29,12 @@ class ConversorWindow extends MainWindow<Conversor> {
 
 		new Label(mainPanel).text = "Ingrese la longitud en millas"
 
-		new TextBox(mainPanel) => [
+		new NumericField(mainPanel) => [
 			value <=> "millas"
 		]
 		// otra opción
-		//new TextBox(mainPanel).bindValueToProperty("millas")
-
+		//new NumericField(mainPanel).bindValueToProperty("millas")
+		
 		new Button(mainPanel) => [
 			caption = "Convertir a kilómetros"
 			onClick [ | this.modelObject.convertir ]
