@@ -8,6 +8,8 @@ import org.uqbar.arena.windows.ErrorsPanel
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.conversor.ConversorSincronizado
 
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+
 /**
  * Variante del conversor bidireccional.
  * Es decir que permite convertir millas -> km pero también de km -> a millas.
@@ -22,15 +24,15 @@ class ConversorSincronizadoWindow extends MainWindow<ConversorSincronizado> {
 
 	override createContents(Panel mainPanel) {
 		this.setTitle("Conversor sincronizado (XTend)")
-		mainPanel.setLayout(new VerticalLayout)
+		mainPanel.layout = new VerticalLayout
 		
 		new ErrorsPanel(mainPanel, "Listo para convertir")
 
-		new Label(mainPanel).setText("Millas:")
-		new TextBox(mainPanel).bindValueToProperty("millas")
+		new Label(mainPanel).text = "Millas:"
+		new TextBox(mainPanel).value <=> "millas"
 		
-		new Label(mainPanel).setText("Kilometros:")
-		new TextBox(mainPanel).bindValueToProperty("kilometros")
+		new Label(mainPanel).text = "Kilometros:"
+		new TextBox(mainPanel).value <=> "kilometros"
 	}
 
 	def static main(String[] args) {

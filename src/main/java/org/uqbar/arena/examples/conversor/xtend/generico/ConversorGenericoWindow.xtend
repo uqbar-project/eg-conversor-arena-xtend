@@ -14,6 +14,8 @@ import org.uqbar.arena.windows.MainWindow
 import org.uqbar.conversor.Conversion
 import org.uqbar.conversor.ConversorGenerico
 
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+
 /**
  * Conversor generico que permite diversas operaciones de 
  * conversion.
@@ -25,19 +27,19 @@ class ConversorGenericoWindow extends MainWindow<ConversorGenerico> {
 	}
 
 	override createContents(Panel mainPanel) {
-		this.setTitle("Conversor generico (XTend)")
-		mainPanel.setLayout(new VerticalLayout)
+		this.title = "Conversor generico (XTend)"
+		mainPanel.layout = new VerticalLayout
 		
 		new ErrorsPanel(mainPanel, "Listo para convertir")
 
-		new Label(mainPanel).setText("De:")
+		new Label(mainPanel).text = "De:"
 
-		new TextBox(mainPanel).bindValueToProperty("input")
+		new TextBox(mainPanel).value <=> "input"
 		
 		new List(mainPanel) => [
 			allowNull(false)
-			bindItemsToProperty("conversionesPosibles").adapter = nombreAdapter
-			bindValueToProperty("conversion")
+			(items <=> "conversionesPosibles").adapter = nombreAdapter
+			value <=> "conversion"
 		]
 
 		new Button(mainPanel) => [ 
@@ -46,10 +48,11 @@ class ConversorGenericoWindow extends MainWindow<ConversorGenerico> {
 			bindEnabled(new NotNullObservable("conversion"))
 		]
 		
-		new Label(mainPanel).setText("A: ")	
-		new Label(mainPanel)
-			.setBackground(Color.ORANGE)
-			.bindValueToProperty("output")
+		new Label(mainPanel).text = "A: "	
+		new Label(mainPanel) => [
+			background = Color.ORANGE
+			value <=> "output"
+		]
 	}
 	
 	def nombreAdapter() {
