@@ -23,7 +23,7 @@ class ConversorSincronizadoWindow extends MainWindow<ConversorSincronizado> {
 	}
 
 	override createContents(Panel mainPanel) {
-		this.setTitle("Conversor sincronizado (XTend)")
+		this.title = "Conversor sincronizado (XTend)"
 		mainPanel.layout = new VerticalLayout
 		
 		new ErrorsPanel(mainPanel, "Listo para convertir")
