@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>org.uqbar-project</groupId>
 			<artifactId>conversor-domain-xtend</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.3</version>
 		</dependency>
 	</dependencies>
 </project>
