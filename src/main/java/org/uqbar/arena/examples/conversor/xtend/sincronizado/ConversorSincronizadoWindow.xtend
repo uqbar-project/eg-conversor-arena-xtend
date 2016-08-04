@@ -12,7 +12,7 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 /**
  * Variante del conversor bidireccional.
- * Es decir que permite convertir millas -> km pero también de km -> a millas.
+ * Es decir que permite convertir millas a km pero también de km a millas.
  * Para esto, no utiliza ningun boton, sino que convierte instantaneamente a medida que se
  * va ingresando el valor en uno de los dos textfields.
  */

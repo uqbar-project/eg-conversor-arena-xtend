@@ -13,7 +13,7 @@ import org.uqbar.conversor.Conversor
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 /**
- * Ejemplo de conversor millas -> kilometros en xtend
+ * Ejemplo de conversor millas a kilometros en xtend
  */
 class ConversorWindow extends MainWindow<Conversor> {
 	new() {
@@ -54,8 +54,8 @@ class ConversorWindow extends MainWindow<Conversor> {
 		/**
 		 * esta segunda opción es visualmente útil
 		 * ya que
-		 *  =    implica que tengo una asignación fija (no hay binding)
-		 * <=>   implica que hay binding y es bidireccional entre modelo y vista
+		 *  =           implica que tengo una asignación fija (no hay binding)
+		 * con flechas  implica que hay binding y es bidireccional entre modelo y vista
 		 */
 		
 		new Label(mainPanel).text = " kilómetros"

@@ -72,11 +72,11 @@ public class ConversorSincronizadoSWT implements ModifyListener {
 			val newValue = Double.parseDouble(modifiedText.text)
 
 			if(modifiedText == millas) {
-				// millas -> kms
+				// millas a kms
 				kms.text = new DecimalFormat("#.##").format(newValue * MILLAS_KM)
 			}
 			else {
-				// kms -> millas 
+				// kms a millas 
 				millas.text = new DecimalFormat("#.##").format(newValue * KM_MILLAS)
 			}
 		}
