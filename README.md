@@ -1,4 +1,7 @@
 # Conversor de medidas
+
+[![Build Status](https://travis-ci.org/uqbar-project/eg-conversor-arena-xtend.svg?branch=master)](https://travis-ci.org/uqbar-project/eg-conversor-arena-xtend)
+
 Se pide desarrollar una aplicación que permita convertir de una unidad de medida a otra.
 
 ## Modelo de pantalla
