@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/eg-conversor-arena-xtend/src/main/generated-sources/xtend/org/uqbar/arena/examples/conversor/xtend/ConversorWindow.java"/>
+<listEntry value="/conversor-ui-arena-xtend/src/main/generated-sources/xtend/org/uqbar/arena/examples/conversor/xtend/ConversorWindow.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
@@ -12,7 +12,7 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.uqbar.arena.examples.conversor.xtend.ConversorWindow"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="eg-conversor-arena-xtend"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="conversor-ui-arena-xtend"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Djava.system.class.loader=org.uqbar.apo.APOClassLoader -Duser.language=es -Duser.region=AR"/>
 </launchConfiguration>
