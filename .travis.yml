@@ -2,3 +2,5 @@ language: java
 jdk:
   - oraclejdk8
 
+before-install:
+- cp settings.xml $HOME/.m2/settings.xml
