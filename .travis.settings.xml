@@ -1,0 +1,26 @@
+<settings xmlns="http://maven.apache.org/POM/4.0.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+   <profiles>
+     <profile>
+       <id>uqbar-wiki</id>
+       <repositories>
+         <repository>
+           <id>uqbar-wiki.org-releases</id>
+           <name>uqbar-wiki.org-releases</name>
+           <url>http://maven.uqbar.org/releases</url>
+         </repository>
+         <repository>
+           <snapshots/>
+           <id>uqbar-wiki.org-snapshots</id>
+           <name>uqbar-wiki.org-snapshots</name>
+           <url>http://maven.uqbar.org/snapshots</url>
+         </repository>
+       </repositories>
+     </profile>
+   </profiles>
+   <activeProfiles>
+     <activeProfile>uqbar-wiki</activeProfile>
+   </activeProfiles>
+ </settings>
+
