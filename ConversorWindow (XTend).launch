@@ -10,6 +10,7 @@
 <listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.uqbar.arena.examples.conversor.xtend.ConversorWindow"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="eg-conversor-arena-xtend"/>

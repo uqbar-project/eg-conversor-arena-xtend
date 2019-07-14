@@ -20,9 +20,7 @@ import static org.eclipse.swt.SWT.*
  * @author jfernandes
  */
 class ConversorSWT extends ApplicationWindow {
-	Label millasLabel
 	Text millasTextBox
-	Label kmsLabel
 	Label kmsValueLabel
 
 	new() {
@@ -30,13 +28,13 @@ class ConversorSWT extends ApplicationWindow {
 		addStatusLine
 	}
 
-	override def Control createContents(Composite parent) {
+	override Control createContents(Composite parent) {
 		shell.text = "Conversor (SWT)"
 
 		val panel = new Composite(parent, NONE)
 		panel.layout = new GridLayout(4, true)
 
-		millasLabel = new Label(panel, NONE) => [
+		new Label(panel, NONE) => [
 			text = "Millas: "
 			HSpan = 1 
 		]
@@ -44,7 +42,7 @@ class ConversorSWT extends ApplicationWindow {
 		millasTextBox = new Text(panel, BORDER)
 		millasTextBox.HSpan = 3
 
-		kmsLabel = new Label(panel, NONE) => [
+		new Label(panel, NONE) => [
 			text = "Kms: "
 			HSpan = 1
 		]

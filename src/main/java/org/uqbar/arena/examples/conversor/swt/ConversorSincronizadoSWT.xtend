@@ -20,7 +20,7 @@ import static org.eclipse.swt.SWT.*
  * 
  * @author jfernandes
  */
-public class ConversorSincronizadoSWT implements ModifyListener {
+class ConversorSincronizadoSWT implements ModifyListener {
 	val MILLAS_KM = 1.60934
 	val KM_MILLAS = 1 / 1.60934 
 
@@ -58,7 +58,7 @@ public class ConversorSincronizadoSWT implements ModifyListener {
 	/**
 	 * Called when the user modifies the text in a text box
 	 */
-	override def void modifyText(ModifyEvent event) {
+	override void modifyText(ModifyEvent event) {
 		eventsLock.lock
 		feedbackLabel.text = ""
 		
