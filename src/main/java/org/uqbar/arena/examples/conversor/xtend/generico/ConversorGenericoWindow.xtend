@@ -56,7 +56,7 @@ class ConversorGenericoWindow extends MainWindow<ConversorGenerico> {
 	}
 	
 	def nombreAdapter() {
-		new PropertyAdapter(typeof(Conversion), "nombre")
+		new PropertyAdapter(Conversion, "nombre")
 	}
 
 	def static main(String[] args) {
